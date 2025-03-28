@@ -18,7 +18,7 @@ const Agent = ({ userName }: AgentProps) => {
     const callStatus = CallStatus.FINISHED;
     const messages = [
         'What is your name?',
-        'My name is John Doe, nice to meet you',
+        'My name is John, nice to meet you',
     ]
     const lastMessage = messages[messages.length - 1];
 
@@ -45,8 +45,7 @@ const Agent = ({ userName }: AgentProps) => {
                     <div className='transcript'>
                         <p key={lastMessage} className={cn(
                             'transition-opacity duration-500 opacity-0',
-                            'animate-fadeIn opacity-100'
-                        )}>
+                            'animate-fadeIn opacity-100')}>
                             {lastMessage}
                         </p>
                     </div>
@@ -56,7 +55,7 @@ const Agent = ({ userName }: AgentProps) => {
                 {callStatus !== 'ACTIVE' ? (
                     <button className='relative btn-call'>
                         <span className={cn('absolute animate-ping rounded-full opacity-75', 
-                        callStatus !== 'CONNECTING' & 'hidden')}/>
+                        callStatus !== 'CONNECTING' && 'hidden')}/>
                         <span>
                             {callStatus === 'INACTIVE' || callStatus === 'FINISHED' ? 'Call' : '...'}
                         </span>

@@ -1,5 +1,6 @@
 'use server'
-import { auth, db } from "@/firebase/admin";
+
+import { db, auth } from "@/firebase/admin";
 import { cookies } from "next/headers";
 
 const ONE_WEEK = 60 * 60 * 24 * 7;
@@ -33,7 +34,7 @@ export async function signUp(params: SignUpParams) {
         if(error.code === 'auth/email-already-exist') {
             return {
                 success: false,
-                error: 'this email is already in use',
+                error: 'This email is already in use',
             }
         }
 
@@ -41,7 +42,6 @@ export async function signUp(params: SignUpParams) {
             success: false,
             error: 'Failed to create account',
         }
-
     }
 }
 
@@ -72,7 +72,6 @@ export async function setSessionCookie(idToken: string) {
     const cookeStore = await cookies();
     const sessionCookie = await auth.createSessionCookie(idToken, {
         expiresIn: ONE_WEEK * 1000,
-
     });
 
     cookeStore.set('session', sessionCookie, {
