@@ -1,10 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { dummyInterviews } from "@/constants";
 import InterviewCard from "@/components/InterviewCard";
+import { getCurrentUser, getInterviewsByUserId, getLatestInterviews } from "@/lib/actions/auth.action";
 
-const Page = () => {
+
+const Page = async () => {
+  const user = await getCurrentUser();
+  const [userInterviews, allInterviews] = await Promise.all([
+    getInterviewsByUserId( user?.id! ),
+    getLatestInterviews({ userId: user?.id! })
+  ]);
+
+  const hasPastInterviews = userInterviews?.length > 0;
+  const hasUpcomingInterviews = allInterviews?.length > 0;
+
   return (
     <>
       <section className="card-cta">
@@ -26,21 +36,27 @@ const Page = () => {
           Your Intervew
         </h2>
         <div className="interviews-section">
-          {dummyInterviews.map((interview) => (
-            <InterviewCard key={interview.id} {...interview} />
-          ))}
-          <p>You haven&apos;t taken any interviews yet</p>
+        { 
+            hasPastInterviews ? (
+              userInterviews?.map((interview) => (
+                <InterviewCard key={interview.id} {...interview} />
+              ))) : (
+                <p>You haven&apos;t taken any interviews yet</p>
+              )
+          }
         </div>
       </section>
       <section className="flex flex-col gap-6 mt-8">
         <h2>Take an Interview</h2>
         <div className="interviews-section">
-          <p>There are no interviews available</p>
-        </div>
-        <div className="interviews-section">
-          {dummyInterviews.map((interview) => (
-            <InterviewCard key={interview.id} {...interview} />
-          ))}
+          {
+            hasUpcomingInterviews ? (
+              allInterviews?.map((interview) => (
+                <InterviewCard key={interview.id} {...interview} />
+              ))) : (
+                 <p>there are no new interviews available</p>
+            )
+          }
         </div>
       </section>
     </>
