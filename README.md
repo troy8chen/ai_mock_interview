@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Mock Interview Platform
 
-## Getting Started
+An AI-powered mock interview platform that helps users practice technical interviews with an AI interviewer. Built with Next.js, Firebase, and VAPI AI.
 
-First, run the development server:
+## Introduction
 
+This project is inspired by the [AI Interviewer Tutorial](https://www.youtube.com/watch?v=8GK8R77Bd7g&t=12593s) and provides a platform for users to practice technical interviews with an AI interviewer. The platform uses advanced AI models to conduct interviews, provide real-time feedback, and generate comprehensive post-interview assessments.
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React, TypeScript, TailwindCSS
+- **Backend**: Firebase Admin SDK
+- **AI/ML**: 
+  - VAPI AI for real-time voice interactions
+  - Google's Gemini AI for interview analysis
+- **Authentication**: Firebase Authentication
+- **Database**: Firebase Firestore
+- **Styling**: TailwindCSS, Shadcn UI
+
+## Features
+
+- Real-time AI-powered voice interviews
+- Dynamic question generation
+- Real-time transcription
+- Comprehensive post-interview feedback
+- Interview history tracking
+- User authentication
+- Responsive design
+- Dark/Light mode support
+
+## Prerequisites
+
+- Node.js 18.x or later
+- npm or yarn
+- Firebase account
+- VAPI AI account
+- Google Cloud account (for Gemini AI)
+
+## Quick Start
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/ai-mock-interview.git
+cd ai-mock-interview
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables (see Environment Variables section)
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the root directory with the following variables:
 
-## Learn More
+```env
+# Firebase Client
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
 
-To learn more about Next.js, take a look at the following resources:
+# Firebase Admin
+FIREBASE_PROJECT_ID=
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_PRIVATE_KEY=
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# VAPI AI
+NEXT_PUBLIC_VAPI_WEB_TOKEN=
+NEXT_PUBLIC_VAPI_WORKFLOW_ID=
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Google AI
+GOOGLE_GENERATIVE_AI_API_KEY=
+```
 
-## Deploy on Vercel
+## Running the Program
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Development Mode**:
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Production Build**:
+```bash
+npm run build
+npm start
+# or
+yarn build
+yarn start
+```
+
+3. **Linting**:
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Acknowledgments
+
+- [AI Interviewer Tutorial](https://www.youtube.com/watch?v=8GK8R77Bd7g&t=12593s) for inspiration
+- VAPI AI for voice interaction capabilities
+- Google's Gemini AI for interview analysis
